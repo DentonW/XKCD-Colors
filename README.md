@@ -17,12 +17,12 @@ in the table.
 #include "XkcdColors.h"
 
 auto hexColor = xkcdColors::GetColorHexString("midnight blue");
-auto intColor = xkcdColors::GetColorInt("swamp");
-auto rgbColor = xkcdColors::GetColorRgb("baby puke green");
+auto intColor = xkcdColors::GetColorInt("baby puke green");
+auto rgbColor = xkcdColors::GetColorRgb("eggshell");
 ```
 
-As with any usage of std::optional, it should be checked to see whether it contains
-a value. These functions return an empty std::optional if the color does not exist.
+As with any usage of `std::optional`, it should be checked to see whether it contains
+a value. These functions return an empty `std::optional` if the color does not exist.
 
 ```c++
 if (hexColor)

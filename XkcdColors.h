@@ -5,7 +5,7 @@
 //
 // License: https://opensource.org/licenses/MIT
 // 
-// The MIT License (MIT)
+//  MIT License (MIT)
 //
 //  Copyright (c) 2021 Denton Woods
 //  
@@ -27,7 +27,6 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-
 
 #include <optional>
 #include <string>
