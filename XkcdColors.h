@@ -1,4 +1,33 @@
-// License: http://creativecommons.org/publicdomain/zero/1.0/
+// 
+// Converts color names from the XKCD color survey into their equivalent RGB values.
+//  The results of this survey are at https://xkcd.com/color/rgb/, and a description
+//  of the survey and results is at https://blog.xkcd.com/2010/05/03/color-survey-results/.
+//
+// License: https://opensource.org/licenses/MIT
+// 
+// The MIT License (MIT)
+//
+//  Copyright (c) 2021 Denton Woods
+//  
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//  
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
+//  
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
+//
+
 
 #include <optional>
 #include <string>
@@ -14,7 +43,6 @@ namespace xkcdColors
         uint8_t b;
     };
 
-    // 
     // Function declarations here to make it easier on users. Definitions are after the large color array.
 
     std::optional<uint32_t>    GetColorInt(std::string colorName);
@@ -1031,11 +1059,6 @@ namespace xkcdColors
         auto color = GetColorRgb(colorName);
         if (!color)
             return {};
-
-        //std::stringstream s;
-        //// If these are not casted, C++ treats uint8_t like a char, outputting the character instead of the numeric value.
-        //s << std::hex << "#" << std::setfill('0') << std::setw(2) << static_cast<int>((*color).r) << static_cast<int>((*color).g) << static_cast<int>((*color).b);
-        //return s.str();
 
         std::string s = "#" + internal::ToHex((*color).r) + internal::ToHex((*color).g) + internal::ToHex((*color).b);
         return s;
