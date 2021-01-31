@@ -13,7 +13,7 @@ int main()
     std::cout << "blue: " << (int)color.b << "\n";
 
     //std::string s = *GetColorHexString("midnight blue");
-    //std::cout << *GetColorHexString("midnight blue") << "\n";
+    std::cout << *GetColorHexString("midnight blue") << "\n";
 
     auto fuschiaString = GetColorHexString("fuschia");  // Common fuchsia misspelling
     if (!fuschiaString)

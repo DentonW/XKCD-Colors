@@ -1,10 +1,6 @@
 // License: http://creativecommons.org/publicdomain/zero/1.0/
 
-// Note that this only works properly with Little Endian systems at the moment
-
-#include <iomanip>
 #include <optional>
-#include <sstream>
 #include <string>
 
 
@@ -18,6 +14,7 @@ namespace xkcdColors
         uint8_t b;
     };
 
+    // 
     // Function declarations here to make it easier on users. Definitions are after the large color array.
 
     std::optional<uint32_t>    GetColorInt(std::string colorName);
@@ -985,13 +982,23 @@ namespace xkcdColors
             { "purple", 0x7e1e9c }
         };
 
+        //! Converts a 24-bit color into an RGB struct
         RGBs HexToRGB(uint32_t hexColor)
         {
+            // This only works properly with Little Endian systems
             RGBs color;
             color.r = (hexColor >> 16) & 0xFF;
             color.g = (hexColor >> 8) & 0xFF;
             color.b = (hexColor) & 0xFF;
             return color;
+        }
+
+        //! Converts a byte to a hex string
+        std::string ToHex(uint8_t color)
+        {
+            const std::string hexChars[] = { "0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F" };
+            std::string s = hexChars[(color>>4) & 0xF] + hexChars[color & 0xF];
+            return s;
         }
     };  // End namespace xkcdColors::internal
 
@@ -1025,10 +1032,13 @@ namespace xkcdColors
         if (!color)
             return {};
 
-        std::stringstream s;
-        // If these are not casted, C++ treats uint8_t like a char, outputting the character instead of the numeric value.
-        s << std::hex << "#" << std::setfill('0') << std::setw(2) << static_cast<int>((*color).r) << static_cast<int>((*color).g) << static_cast<int>((*color).b);
-        return s.str();
+        //std::stringstream s;
+        //// If these are not casted, C++ treats uint8_t like a char, outputting the character instead of the numeric value.
+        //s << std::hex << "#" << std::setfill('0') << std::setw(2) << static_cast<int>((*color).r) << static_cast<int>((*color).g) << static_cast<int>((*color).b);
+        //return s.str();
+
+        std::string s = "#" + internal::ToHex((*color).r) + internal::ToHex((*color).g) + internal::ToHex((*color).b);
+        return s;
     }
 
 };  // End namespace xkcdColors
