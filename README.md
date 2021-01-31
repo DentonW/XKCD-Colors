@@ -10,8 +10,8 @@ There are only three functions to be used in this package. All three take a stri
 with the color name as an input, and they return different representations of the
 color data. These functions return their values wrapped in a std::optional, since a
 color requested may not exist. The easier alternative would have been to return a
-default value, but then there is no way to tell whether that color actually existed
-in the table.
+default value in that case, but then there is no way to tell whether that color
+actually existed in the table or not.
 
 ```c++
 #include "XkcdColors.h"

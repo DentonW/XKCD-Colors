@@ -1,4 +1,15 @@
-// Simple program showing how to use XkcdColors.h package
+/*
+ * Simple program showing how to use XkcdColors.h package
+ * Output should be:
+ * 
+ *  baby puke green: #b6c406
+ *  eggshell
+ *   red: ff
+ *   green: ff
+ *   blue: d4
+ *  midnight blue: #020035
+ *  Could not find fuschia 
+ */
 
 #include <iomanip>
 #include <iostream>
