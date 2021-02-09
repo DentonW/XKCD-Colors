@@ -3,6 +3,7 @@
  *  The results of this survey are at https://xkcd.com/color/rgb/, and a description
  *  of the survey and results is at https://blog.xkcd.com/2010/05/03/color-survey-results/.
  *
+ * SPDX-License-Identifier: MIT
  * License: https://opensource.org/licenses/MIT
  * 
  *  MIT License (MIT)
@@ -29,7 +30,7 @@
  */
 
 #include <optional>
-#include <string>
+#include <string_view>
 
 
 namespace xkcdColors
@@ -44,9 +45,9 @@ namespace xkcdColors
 
     // Function declarations here to make it easier on users. Definitions are after the large color array.
 
-    std::optional<uint32_t>    GetColorInt(std::string colorName);
-    std::optional<RGBs>        GetColorRgb(std::string colorName);
-    std::optional<std::string> GetColorHexString(std::string colorName);
+    std::optional<uint32_t>    GetColorInt(std::string_view colorName);
+    std::optional<RGBs>        GetColorRgb(std::string_view colorName);
+    std::optional<std::string> GetColorHexString(std::string_view colorName);
 
     namespace internal
     {
@@ -1031,7 +1032,7 @@ namespace xkcdColors
 
     // These functions need to be after the definition of internal::colors
 
-    std::optional<uint32_t> GetColorInt(std::string colorName)
+    std::optional<uint32_t> GetColorInt(std::string_view colorName)
     {
         for (auto& color : internal::colors)
         {
@@ -1044,7 +1045,7 @@ namespace xkcdColors
         return {};
     }
 
-    std::optional<RGBs> GetColorRgb(std::string colorName)
+    std::optional<RGBs> GetColorRgb(std::string_view colorName)
     {
         auto color = GetColorInt(colorName);
         if (!color)
@@ -1053,7 +1054,7 @@ namespace xkcdColors
         return internal::HexToRGB(*color);
     }
 
-    std::optional<std::string> GetColorHexString(std::string colorName)
+    std::optional<std::string> GetColorHexString(std::string_view colorName)
     {
         auto color = GetColorRgb(colorName);
         if (!color)
