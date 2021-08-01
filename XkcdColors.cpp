@@ -22,9 +22,7 @@ int main()
 {
     auto intColor = xkcd::GetColorInt("baby puke green");
     if (intColor)
-    {
         std::cout << "baby puke green: #" << std::hex << *intColor << "\n";
-    }
 
     auto rgbColor = xkcd::GetColorRgb("eggshell");
     if (rgbColor)

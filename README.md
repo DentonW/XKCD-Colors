@@ -28,5 +28,5 @@ a value. These functions return an empty `std::optional` if the color does not e
 if (hexColor)
     std::cout << hexColor << "\n";
 else
-    std::cout << "Requested color does not exist" << "\n";
+    std::cout << "Requested color does not exist\n";
 ```
